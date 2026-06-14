@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepSeek | 深度求索</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+    
+    body {
+      font-family: 'Inter', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+    }
+    
+    .section-heading {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+    }
+    
+    .model-card {
+      transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    
+    .model-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      border-color: #3f3f46;
+    }
+    
+    .nav-link {
+      transition: color 0.1s ease;
+    }
+    
+    .nav-link:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white antialiased">
+  <!-- 顶部公告栏 -->
+  <div class="bg-zinc-900 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 py-3">
+      <a href="https://mp.weixin.qq.com/s/8bxXqS2R8Fx5-1TLDBiEDg" 
+         target="_blank"
+         class="flex items-center justify-center gap-2 text-sm hover:text-indigo-400 transition-colors group">
+        <span class="text-lg">🎉</span>
+        <span class="font-medium">DeepSeek-V4 预览版本发布，具备世界顶级推理性能，Agent 能力大幅提高，已在网页端、APP 和 API 上线，点击查看详情。</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-60 group-hover:opacity-100 transition-opacity"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- 导航栏 -->
+  <nav class="border-b border-zinc-800 bg-zinc-950/95 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-white rounded-2xl flex items-center justify-center shadow-inner">
+          <span class="text-zinc-950 font-bold text-2xl tracking-[-1.5px]">DS</span>
+        </div>
+        <div>
+          <span class="font-semibold text-2xl tracking-[-0.5px]">DeepSeek</span>
+          <span class="text-zinc-400 text-xl font-light ml-1">| 深度求索</span>
+        </div>
+      </div>
+
+      <!-- 导航链接 -->
+      <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+        <a href="#research" class="nav-link text-zinc-400 hover:text-white">研究</a>
+        <a href="https://chat.deepseek.com/" target="_blank" class="nav-link text-zinc-400 hover:text-white">网页端</a>
+        <a href="#api" class="nav-link text-zinc-400 hover:text-white">API</a>
+        <a href="#join" class="nav-link text-zinc-400 hover:text-white">加入我们</a>
+      </div>
+
+      <!-- 右侧按钮 -->
+      <div class="flex items-center gap-3">
+        <a href="https://chat.deepseek.com/" 
+           target="_blank"
+           class="hidden sm:flex items-center justify-center px-6 h-10 rounded-2xl bg-white text-zinc-950 text-sm font-semibold hover:bg-zinc-100 active:scale-[0.985] transition-all">
+          开始聊天
+        </a>
+        <a href="#research" 
+           class="flex items-center justify-center px-5 h-10 rounded-2xl border border-zinc-700 hover:bg-zinc-900 text-sm font-medium transition-colors">
+          浏览模型
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero 区域 -->
+  <section class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+    <h1 class="text-7xl md:text-[88px] leading-[1.05] font-semibold tracking-[-4.5px] mb-6">
+      探索未至之境
+    </h1>
+    <p class="max-w-md mx-auto text-xl text-zinc-400 mb-10">
+      DeepSeek 持续推动人工智能前沿技术开放与创新
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <a href="https://chat.deepseek.com/" 
+         target="_blank"
+         class="group flex items-center justify-center gap-3 px-8 h-14 rounded-3xl bg-white text-zinc-950 font-semibold text-lg hover:bg-zinc-100 active:scale-[0.985] transition-all w-full sm:w-auto">
+        立即体验网页端
+        <i class="fa-solid fa-arrow-right group-hover:translate-x-0.5 transition-transform"></i>
+      </a>
+      
+      <a href="#research" 
+         class="flex items-center justify-center gap-3 px-8 h-14 rounded-3xl border border-zinc-700 hover:bg-zinc-900 font-medium text-lg transition-colors w-full sm:w-auto">
+        查看研究模型
+      </a>
+    </div>
+    
+    <div class="mt-12 flex justify-center">
+      <div class="inline-flex items-center gap-2 text-xs text-zinc-500 bg-zinc-900 px-4 h-8 rounded-2xl border border-zinc-800">
+        <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+        <span>DeepSeek-V4 现已上线网页端、APP 与 API</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 研究板块 -->
+  <section id="research" class="max-w-7xl mx-auto px-6 pb-20">
+    <div class="flex items-end justify-between mb-8">
+      <h2 class="section-heading">研究</h2>
+      <a href="https://github.com/deepseek-ai" target="_blank" 
+         class="hidden md:flex items-center text-sm text-zinc-400 hover:text-white transition-colors">
+        在 GitHub 查看全部 <i class="fa-solid fa-arrow-up-right-from-square ml-1.5 text-xs"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- 模型卡片 -->
+      <div class="model-card bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+        <div class="flex-1">
+          <div class="font-semibold text-2xl tracking-tight mb-1">DeepSeek R1</div>
+          <div class="text-emerald-400 text-xs font-medium tracking-wider">FLAGSHIP</div>
+        </div>
+        <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank"
+           class="mt-6 inline-flex items-center text-sm font-medium text-indigo-400 hover:text-indigo-300 group">
+          在 GitHub 上查看 
+          <i class="fa-solid fa-external-link-alt ml-1.5 text-xs group-hover:translate-x-0.5 transition"></i>
+        </a>
+      </div>
+
+      <div class="model-card bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+        <div class="flex-1">
+          <div class="font-semibold text-2xl tracking-tight mb-1">DeepSeek V3</div>
+          <div class="text-emerald-400 text-xs font-medium tracking-wider">GENERAL</div>
+        </div>
+        <a href="https://github.com/deepseek-ai/DeepSeek-V3" target="_blank"
+           class="mt-6 inline-flex items-center text-sm font-medium text-indigo-400 hover:text-indigo-300 group">
+          在 GitHub 上查看 
+          <i class="fa-solid fa-external-link-alt ml-1.5 text-xs group-hover:translate-x-0.5 transition"></i>
+        </a>
+      </div>
+
+      <div class="model-card bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+        <div class="flex-1">
+          <div class="font-semibold text-2xl tracking-tight mb-1">DeepSeek Coder V2</div>
+          <div class="text-emerald-400 text-xs font-medium tracking-wider">CODE</div>
+        </div>
+        <a href="https://github.com/deepseek-ai/DeepSeek-Coder-V2" target="_blank"
+           class="mt-6 inline-flex items-center text-sm font-medium text-indigo-400 hover:text-indigo-300 group">
+          在 GitHub 上查看 
+          <i class="fa-solid fa-external-link-alt ml-1.5 text-xs group-hover:translate-x-0.5 transition"></i>
+        </a>
+      </div>
+
+      <div class="model-card bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+        <div class="flex-1">
+          <div class="font-semibold text-2xl tracking-tight mb-1">DeepSeek VL</div>
+          <div class="text-emerald-400 text-xs font-medium tracking-wider">VISION</div>
+        </div>
+        <a href="https://github.com/deepseek-ai/DeepSeek-VL" target="_blank"
+           class="mt-6 inline-flex items-center text-sm font-medium text-indigo-400 hover:text-indigo-300 group">
+          在 GitHub 上查看 
+          <i class="fa-solid fa-external-link-alt ml-1.5 text-xs group-hover:translate-x-0.5 transition"></i>
+        </a>
+      </div>
+
+      <div class="model-card bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+        <div class="flex-1">
+          <div class="font-semibold text-2xl tracking-tight mb-1">DeepSeek V2</div>
+          <div class="text-emerald-400 text-xs font-medium tracking-wider">GENERAL</div>
+        </div>
+        <a href="https://github.com/deepseek-ai/DeepSeek-V2" target="_blank"
+           class="mt-6 inline-flex items-center text-sm font-medium text-indigo-400 hover:text-indigo-300 group">
+          在 GitHub 上查看 
+          <i class="fa-solid fa-external-link-alt ml-1.5 text-xs group-hover:translate-x-0.5 transition"></i>
+        </a>
+      </div>
+
+      <div class="model-card bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+        <div class="flex-1">
+          <div class="font-semibold text-2xl tracking-tight mb-1">DeepSeek Coder</div>
+          <div class="text-emerald-400 text-xs font-medium tracking-wider">CODE</div>
+        </div>
+        <a href="https://github.com/deepseek-ai/DeepSeek-Coder" target="_blank"
+           class="mt-6 inline-flex items-center text-sm font-medium text-indigo-400 hover:text-indigo-300 group">
+          在 GitHub 上查看 
+          <i class="fa-solid fa-external-link-alt ml-1.5 text-xs group-hover:translate-x-0.5 transition"></i>
+        </a>
+      </div>
+
+      <div class="model-card bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+        <div class="flex-1">
+          <div class="font-semibold text-2xl tracking-tight mb-1">DeepSeek Math</div>
+          <div class="text-emerald-400 text-xs font-medium tracking-wider">MATH</div>
+        </div>
+        <a href="https://github.com/deepseek-ai/DeepSeek-Math" target="_blank"
+           class="mt-6 inline-flex items-center text-sm font-medium text-indigo-400 hover:text-indigo-300 group">
+          在 GitHub 上查看 
+          <i class="fa-solid fa-external-link-alt ml-1.5 text-xs group-hover:translate-x-0.5 transition"></i>
+        </a>
+      </div>
+
+      <div class="model-card bg-zinc-900 border border-zinc-800 rounded-3xl p-6 flex flex-col">
+        <div class="flex-1">
+          <div class="font-semibold text-2xl tracking-tight mb-1">DeepSeek LLM</div>
+          <div class="text-emerald-400 text-xs font-medium tracking-wider">BASE</div>
+        </div>
+        <a href="https://github.com/deepseek-ai/DeepSeek-LLM" target="_blank"
+           class="mt-6 inline-flex items-center text-sm font-medium text-indigo-400 hover:text-indigo-300 group">
+          在 GitHub 上查看 
+          <i class="fa-solid fa-external-link-alt ml-1.5 text-xs group-hover:translate-x-0.5 transition"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 法务 & 安全 + 加入我们 -->
+  <section class="max-w-7xl mx-auto px-6 pb-20">
+    <div class="grid md:grid-cols-2 gap-4">
+      <!-- 法务 & 安全 -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8">
+        <h3 class="font-semibold text-2xl tracking-tight mb-6">法务 & 安全</h3>
+        <div class="space-y-4 text-sm">
+          <a href="https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html" target="_blank" 
+             class="flex items-center justify-between group py-1">
+            <span class="text-zinc-300 group-hover:text-white transition-colors">隐私政策</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-zinc-500 group-hover:text-zinc-400"></i>
+          </a>
+          <a href="https://cdn.deepseek.com/policies/en-US/deepseek-terms-of-use.html" target="_blank" 
+             class="flex items-center justify-between group py-1">
+            <span class="text-zinc-300 group-hover:text-white transition-colors">用户协议</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-zinc-500 group-hover:text-zinc-400"></i>
+          </a>
+          <a href="mailto:security@deepseek.com" 
+             class="flex items-center justify-between group py-1">
+            <span class="text-zinc-300 group-hover:text-white transition-colors">反馈安全漏洞</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-zinc-500 group-hover:text-zinc-400"></i>
+          </a>
+          <a href="/transparency/" 
+             class="flex items-center justify-between group py-1">
+            <span class="text-zinc-300 group-hover:text-white transition-colors">透明度</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-zinc-500 group-hover:text-zinc-400"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 加入我们 -->
+      <div id="join" class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 flex flex-col">
+        <h3 class="font-semibold text-2xl tracking-tight mb-3">加入我们</h3>
+        <p class="text-zinc-400 text-sm flex-1">与顶尖团队一起探索人工智能的边界。</p>
+        <a href="https://app.mokahr.com/social-recruitment/high-flyer/140576" target="_blank"
+           class="mt-6 inline-flex items-center justify-center gap-2 px-6 h-11 rounded-2xl border border-zinc-700 hover:bg-zinc-800 text-sm font-medium transition-colors w-full md:w-auto">
+          查看岗位详情
+          <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="border-t border-zinc-800 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-6 py-12 text-sm text-zinc-500">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-y-4">
+        <div>
+          © 2026 杭州深度求索人工智能基础技术研究有限公司 版权所有
+        </div>
+        
+        <div class="flex flex-wrap gap-x-5 gap-y-1 text-xs">
+          <a href="https://beian.miit.gov.cn/" target="_blank" class="hover:text-zinc-400 transition-colors">浙ICP备2023025841号</a>
+          <a href="https://tsm.miit.gov.cn/dxxzsp/xkz/xkzgl/resource/qiyesearch.jsp?num=%E6%B5%99B2-20250178&type=xuke" target="_blank" class="hover:text-zinc-400 transition-colors">浙B2-20250178</a>
+          <a href="https://beian.mps.gov.cn/#/query/webSearch?code=33010502011812" target="_blank" class="hover:text-zinc-400 transition-colors">浙公网安备33010502011812号</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function initializeTailwind() {
+      // Tailwind already loaded via CDN
+    }
+    
+    // 简单平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+    
+    initializeTailwind();
+  </script>
+</body>
+</html>
